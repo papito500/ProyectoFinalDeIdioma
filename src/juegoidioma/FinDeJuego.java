@@ -12,13 +12,21 @@ import java.applet.AudioClip;
  * @author ACER-PC
  */
 public class FinDeJuego extends javax.swing.JFrame {
-
+    private int puntaje;
     private AudioClip sonido;
+
     
-    public FinDeJuego() {
+   
+    public FinDeJuego(int puntaje) {
         initComponents();
+        this.puntaje = puntaje;
+        txtRecibePuntaje.setText(Integer.toString(puntaje));
         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/PERDISTE.wav"));
         sonido.play();
+    }
+
+    private FinDeJuego() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -35,6 +43,10 @@ public class FinDeJuego extends javax.swing.JFrame {
         SALIR = new javax.swing.JButton();
         MENU = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtRecibePuntaje = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,7 +55,7 @@ public class FinDeJuego extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Wide Latin", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("'be̱di");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 238, 100));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 238, 60));
 
         jLabel2.setFont(new java.awt.Font("Wide Latin", 0, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -56,7 +68,7 @@ public class FinDeJuego extends javax.swing.JFrame {
                 SALIRActionPerformed(evt);
             }
         });
-        getContentPane().add(SALIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 130, 60));
+        getContentPane().add(SALIR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 130, 60));
 
         MENU.setText("Volver al Menu");
         MENU.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +76,7 @@ public class FinDeJuego extends javax.swing.JFrame {
                 MENUActionPerformed(evt);
             }
         });
-        getContentPane().add(MENU, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 130, 60));
+        getContentPane().add(MENU, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 130, 60));
 
         jButton1.setText("Reintentar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,11 +84,28 @@ public class FinDeJuego extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 120, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 120, 60));
+
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
+
+        txtRecibePuntaje.setFont(new java.awt.Font("Swis721 Blk BT", 0, 16)); // NOI18N
+        txtRecibePuntaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRecibePuntajeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtRecibePuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 50, 40));
+
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/idioma/PERDISTE.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 300));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -107,6 +136,10 @@ public class FinDeJuego extends javax.swing.JFrame {
         sonido1.stop();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtRecibePuntajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecibePuntajeActionPerformed
+        
+    }//GEN-LAST:event_txtRecibePuntajeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -136,6 +169,8 @@ public class FinDeJuego extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
+            @Override
             public void run() {
                 new FinDeJuego().setVisible(true);
             }
@@ -149,5 +184,9 @@ public class FinDeJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    public static javax.swing.JTextField txtRecibePuntaje;
     // End of variables declaration//GEN-END:variables
 }

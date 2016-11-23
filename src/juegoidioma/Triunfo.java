@@ -13,13 +13,19 @@ import java.awt.event.KeyEvent;
  * @author ACER-PC
  */
 public class Triunfo extends javax.swing.JFrame {
-
+    private int punaje;
     private AudioClip sonido;
     
-    public Triunfo() {
+    public Triunfo(int puntaje) {
         initComponents();
+        this.punaje=puntaje;
+        txtPuntaje.setText(Integer.toString(puntaje));
         AudioClip sonido = java.applet.Applet.newAudioClip(getClass().getResource("/felicidades.wav"));
         sonido.play();
+    }
+
+    private Triunfo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -33,6 +39,7 @@ public class Triunfo extends javax.swing.JFrame {
 
         salir = new javax.swing.JButton();
         menu = new javax.swing.JButton();
+        txtPuntaje = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -60,8 +67,15 @@ public class Triunfo extends javax.swing.JFrame {
         });
         getContentPane().add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 112, 77));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/idioma/bravo.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 80, 50));
+        txtPuntaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuntajeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtPuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 60, 50));
+
+        jLabel2.setText("Puntaje");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 70, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/idioma/felicidades18mq5.gif"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 324));
@@ -90,6 +104,10 @@ public class Triunfo extends javax.swing.JFrame {
         this.setVisible(false);
         sonido.stop();
     }//GEN-LAST:event_menuActionPerformed
+
+    private void txtPuntajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuntajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPuntajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +138,8 @@ public class Triunfo extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
+            @Override
             public void run() {
                 new Triunfo().setVisible(true);
             }
@@ -131,5 +151,6 @@ public class Triunfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton menu;
     private javax.swing.JButton salir;
+    private javax.swing.JTextField txtPuntaje;
     // End of variables declaration//GEN-END:variables
 }

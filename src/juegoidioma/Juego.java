@@ -1,24 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package juegoidioma;
 
 import java.applet.AudioClip;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author ACER-PC
  */
-public class Juego extends javax.swing.JFrame {
+public class Juego extends javax.swing.JFrame  {
 
     /**
      * Creates new form Juego
      */
     public Juego() {
         initComponents();
+        NuevoUsuario nuevo= new NuevoUsuario();
+        nuevo.setVisible(true);
+        
+        this.setTitle("Aprende Otomi");
+        this.setLocation(300,120);
     }
 
     /**
@@ -35,6 +38,8 @@ public class Juego extends javax.swing.JFrame {
         btnJugar = new javax.swing.JButton();
         lblDibujo = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,7 +51,7 @@ public class Juego extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 140, 70));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 140, 70));
 
         btnInstrucciones.setText("INSTRUCCIONES");
         btnInstrucciones.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +76,22 @@ public class Juego extends javax.swing.JFrame {
         lblTitulo.setForeground(new java.awt.Color(204, 0, 51));
         lblTitulo.setText("Aprende  Otomi Jugando");
         getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 560, 120));
+
+        jButton1.setText("Minijuegos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, 70));
+
+        jButton2.setText("Diccionario");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 130, 70));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/idioma/fondo.jpg"))); // NOI18N
         lblFondo.setText("jLabel1");
@@ -97,7 +118,7 @@ public class Juego extends javax.swing.JFrame {
             +"\n pero en otomi."
             +"\n El apartado donde se pondra la palabara debe estar en minusculas,"
             +"\n de otra fora se considerara como si estuviera mal la respuesta."
-            +"\n se le daran 3 vidas para comenzar si fracasa perder");
+            +"\n se le daran 3 vidas para comenzar si fracasa perdera");
         sonido.stop();
     }//GEN-LAST:event_btnInstruccionesActionPerformed
 
@@ -109,6 +130,27 @@ public class Juego extends javax.swing.JFrame {
         this.setVisible(false);
         sonido.stop();
     }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        diccionario d = new diccionario();
+        d.setVisible(true);
+        this.setVisible(false);        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       AudioClip sonido = java.applet.Applet.newAudioClip(getClass().getResource("/sonidito.wav"));
+        sonido.play();
+        try {
+            String url = "C:\\Users\\ACER-PC\\Desktop\\diccionario.pdf";
+            ProcessBuilder p = new ProcessBuilder();
+            p.command("cmd.exe","/c",url);
+            p.start();
+        } catch (IOException ex) {
+            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sonido.stop();
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,7 +182,8 @@ public class Juego extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Juego().setVisible(true);
+                new Juego().setVisible(false);
+                
             }
         });
     }
@@ -149,6 +192,8 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JButton btnInstrucciones;
     private javax.swing.JButton btnJugar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblDibujo;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblTitulo;
